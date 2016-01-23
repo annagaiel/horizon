@@ -1,0 +1,7 @@
+---
+title: "Student Ranking"
+type: "exercise"
+description: "Utilize arguments and return values to output student rankings"
+tags: "methods, return-values, parameters, arguments, arrays"
+ignore:
+- "student_ranking.md"
