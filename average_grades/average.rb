@@ -3,16 +3,12 @@ def average(*grades)
 end
 
 def letter_grade(average)
-  if average >= 90
-    "A"
-  elsif average >= 80 && average < 90
-    "B"
-  elsif average >= 70 && average < 80
-    "C"
-  elsif average >= 60 && average < 70
-    "D"
-  elsif average < 60
-    "F"
+  case
+    when average >= 90 then "A"
+    when average >= 80 && average < 90 then "B"
+    when average >= 70 && average < 80 then "C"
+    when average >= 60 && average < 70 then "D"
+    when average < 60 then "F"
   end
 end
 
