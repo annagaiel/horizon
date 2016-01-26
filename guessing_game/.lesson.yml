@@ -1,7 +1,0 @@
----
-title: "Guessing Game"
-type: "challenge"
-description: "Building a game using random numbers"
-tags: "challenge"
-ignore:
-- "guessing_game.md"

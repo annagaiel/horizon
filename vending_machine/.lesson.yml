@@ -1,7 +1,0 @@
----
-title: "Vending Machine"
-type: "exercise"
-description: "build a vending machine that detects if items exist using nil"
-tags: "nil"
-ignore:
-- "vending_machine.md"

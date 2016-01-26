@@ -1,7 +1,0 @@
----
-title: "Golfing Buddies"
-type: "exercise"
-description: "Use hashes to email your favorite golf friends"
-tags: "hashes"
-ignore:
-- "golfing_buddies.md"

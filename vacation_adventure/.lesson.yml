@@ -1,6 +1,0 @@
----
-title: "Vacation Adventure"
-type: "exercise"
-description: "Utilize flow control and randomization to pick an activity"
-ignore:
-- "vacation_adventure.md"

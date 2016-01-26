@@ -1,7 +1,0 @@
----
-title: "Crypt Printing"
-type: "exercise"
-description: "Introduction to printing from arrays in ruby"
-tags: "arrays"
-ignore:
-- "crypt_printing.md"

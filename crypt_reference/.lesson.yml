@@ -1,7 +1,0 @@
----
-title: "Crypt Reference"
-type: "exercise"
-description: "Introduction to referencing arrays in ruby"
-tags: "arrays"
-ignore:
-- "crypt_reference.md"

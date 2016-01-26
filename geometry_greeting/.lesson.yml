@@ -1,7 +1,0 @@
----
-title: "Geometry Greeting"
-type: "exercise"
-description: "Greet students as they arrive with a method that requires an argument"
-tags: "methods, parameters, arguments"
-ignore:
-- "geometry_greeting.md"
