@@ -34,6 +34,49 @@ RSpec.describe Board do
     expect(board.print).to eq(board_printout)
   end
 
+  it 'places a player token on the board' do
+    board.add_turn('x', 'B')
+    board_printout =
+      "|                   |\n" +
+      "|                   |\n" +
+      "|                   |\n" +
+      "|                   |\n" +
+      "|                   |\n" +
+      "|                   |\n" +
+      "|                   |\n" +
+      "|                   |\n" +
+      "|                   |\n" +
+      "|  x                |\n" +
+      " A B C D E F G H I J \n"
+    expect(board.print).to eq(board_printout)
+  end
+
+  it 'should have vertical match winner' do
+    board.add_turn('x', 'B')
+    board.add_turn('o', 'A')
+    board.add_turn('x', 'B')
+    board.add_turn('o', 'C')
+    board.add_turn('x', 'B')
+    board.add_turn('o', 'D')
+    board.add_turn('x', 'B')
+    board_printout =
+      "|                   |\n" +
+      "|                   |\n" +
+      "|                   |\n" +
+      "|                   |\n" +
+      "|                   |\n" +
+      "|                   |\n" +
+      "|  x                |\n" +
+      "|  x                |\n" +
+      "|  x                |\n" +
+      "|o x o o            |\n" +
+      " A B C D E F G H I J \n"
+    expect(board.print).to eq(board_printout)
+    expect(board.winner?).to eq(true)
+  end
+
+
+
 end
 
 

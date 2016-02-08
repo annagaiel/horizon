@@ -1,6 +1,13 @@
 require 'spec_helper'
 require_relative '../lib/player'
 
-describe Player do
+RSpec.describe Player do
+  let(:player) { Player.new("Emily") }
+
+  describe 'player' do
+    it 'can read his name' do
+      expect(player.name).to eq("Emily")
+    end
+  end
 
 end

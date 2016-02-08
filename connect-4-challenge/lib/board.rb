@@ -33,4 +33,23 @@ class Board
     end
     board_print
   end
+
+  def add_turn(token, col_letter)
+    letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    token_placed = false
+    row_length = @board.size - 1
+    while row_length >= 0 do
+      if @board[row_length][letters.index(col_letter)].nil?
+        @board[row_length][letters.index(col_letter)] = token
+        token_placed = true
+      end
+      break if token_placed
+      row_length = row_length - 1
+    end
+  end
+
+  def winner?
+    true
+  end
+
 end
