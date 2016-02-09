@@ -81,7 +81,7 @@ RSpec.describe Board do
     board.add_turn('o', 'D')
     board.add_turn('x', 'B')
     board.add_turn('o', 'E')
-    board.add_turn('x', 'I')
+    board.add_turn('x', 'A')
     board.add_turn('o', 'F')
     board_printout =
       "|                   |\n" +
@@ -93,7 +93,7 @@ RSpec.describe Board do
       "|                   |\n" +
       "|  x                |\n" +
       "|  x                |\n" +
-      "|  x o o o o     x  |\n" +
+      "|x x o o o o        |\n" +
       " A B C D E F G H I J \n"
     expect(board.print).to eq(board_printout)
     expect(board.winner?).to eq(true)

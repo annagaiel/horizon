@@ -16,12 +16,16 @@ turn_index = 0
 board = Board.new(6, 7)
 puts board.print
 
-while true do
+game_ongoing = true
+while game_ongoing do
   puts "It is #{players[turn_index].name} turn to drop her #{players[turn_index].token}"
   puts "Enter the letter to drop your token:"
   choice = gets.chomp.upcase
   board.add_turn(players[turn_index].token, choice)
   puts board.print
-
+  if board.winner?
+    puts "Player #{players[turn_index].token} won."
+    game_ongoing = false
+  end
   turn_index = turn_index == 0 ? 1 : 0
 end

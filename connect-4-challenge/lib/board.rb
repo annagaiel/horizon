@@ -2,9 +2,9 @@ class Board
   LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
   def initialize(rows = 10, cols = 10)
     @board = []
-    rows.times do
+    rows.times do |rindex|
       rows = []
-      cols.times do
+      cols.times do |cindex|
         rows << nil
       end
       @board << rows
@@ -47,8 +47,70 @@ class Board
     end
   end
 
-  def winner?
-    true
+  def horizontal_match
+    winner = ''
+    consecutive_token = nil
+    token_count = 0
+    @board.each do |row|
+      row.each do |space|
+        if space.nil? == false
+          if consecutive_token != space && token_count < 4
+            consecutive_token = space
+            token_count = 1
+          elsif consecutive_token == space
+            token_count = token_count + 1
+          else
+            consecutive_token = space
+            token_count = 1
+          end
+        end
+      end
+      if token_count == 4
+        winner = "Player #{consecutive_token} wins"
+        break
+      else
+        token_count = 0
+        winner = "no match"
+      end
+    end
+    winner
   end
 
+  def vertical_match
+    winner = ''
+    consecutive_token = nil
+    token_count = 0
+    i = 0
+    while i < @board.first.size do
+      j = 0
+      while j < @board.size do
+        space = @board[j][i]
+        if space.nil? == false
+          if consecutive_token != space && token_count < 4
+            consecutive_token = space
+            token_count = 1
+          elsif consecutive_token == space
+            token_count = token_count + 1
+          else
+            consecutive_token = space
+            token_count = 1
+          end
+        end
+        j = j + 1
+      end
+      if token_count == 4
+        winner = "Player #{consecutive_token} wins"
+        break
+      else
+        token_count = 0
+        winner = "no match"
+      end
+      i = i + 1
+    end
+    winner
+  end
+
+  def winner?
+    horizontal_match != "no match" || vertical_match != "no match"
+  end
 end
