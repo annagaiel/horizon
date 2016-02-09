@@ -1,8 +1,8 @@
 require_relative 'cage'
 require_relative 'employee'
-
+class ZooAtCapacity < StandardError
+end
 class Zoo
-  ZooAtCapacity = "Zoo is at capacity."
   attr_reader :season_opening_date, :season_closing_date, :cages, :employees
   def initialize(name, season_opening_date, season_closing_date)
     @name = name
@@ -47,5 +47,5 @@ class Zoo
     end
     noise
   end
-  
+
 end

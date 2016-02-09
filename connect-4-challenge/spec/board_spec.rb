@@ -1,7 +1,6 @@
 require 'spec_helper'
 require_relative '../lib/board'
 
-
 RSpec.describe Board do
   let(:board) { Board.new(row = 10, col = 10) }
 
@@ -75,8 +74,28 @@ RSpec.describe Board do
     expect(board.winner?).to eq(true)
   end
 
-
-
+  it 'should have horizontal match winner' do
+    board.add_turn('x', 'B')
+    board.add_turn('o', 'C')
+    board.add_turn('x', 'B')
+    board.add_turn('o', 'D')
+    board.add_turn('x', 'B')
+    board.add_turn('o', 'E')
+    board.add_turn('x', 'I')
+    board.add_turn('o', 'F')
+    board_printout =
+      "|                   |\n" +
+      "|                   |\n" +
+      "|                   |\n" +
+      "|                   |\n" +
+      "|                   |\n" +
+      "|                   |\n" +
+      "|                   |\n" +
+      "|  x                |\n" +
+      "|  x                |\n" +
+      "|  x o o o o     x  |\n" +
+      " A B C D E F G H I J \n"
+    expect(board.print).to eq(board_printout)
+    expect(board.winner?).to eq(true)
+  end
 end
-
-

@@ -2,7 +2,7 @@ require 'spec_helper'
 require_relative '../lib/player'
 
 RSpec.describe Player do
-  let(:player) { Player.new("Emily") }
+  let(:player) { Player.new('o',"Emily") }
 
   describe 'player' do
     it 'can read his name' do

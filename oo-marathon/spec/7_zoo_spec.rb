@@ -3,7 +3,6 @@ require "spec_helper"
 RSpec.describe Zoo do
   season_opening_date = Date.parse("2015/04/1")
   season_closing_date = Date.parse("2015/12/15")
-  ZooAtCapacity = "Zoo is at capacity."
   let(:zoo) { Zoo.new("Zooniverse", season_opening_date, season_closing_date) }
 
   describe ".new" do
@@ -99,7 +98,7 @@ RSpec.describe Zoo do
   describe "finished" do
     it "should give you a message when you are finished" do
       puts "\nYou're done! You built a Zoo!"
-      system("open", "http://goo.gl/t9QP2d")
+      # system("open", "http://goo.gl/t9QP2d")
     end
   end
 end

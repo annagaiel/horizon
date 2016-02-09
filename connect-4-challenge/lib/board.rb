@@ -1,4 +1,5 @@
 class Board
+  LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
   def initialize(rows = 10, cols = 10)
     @board = []
     rows.times do
@@ -15,7 +16,6 @@ class Board
   end
 
   def print
-    letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     board_print = ''
     @board.each_with_index do |row, index|
       spots = []
@@ -28,19 +28,18 @@ class Board
       end
       board_print << "|" + spots.join(" ") + "|"+ "\n"
       if index == rows.size - 1
-        board_print << ' ' + ('A'..letters[spots.size-1]).to_a.join(' ')  + ' ' + "\n"
+        board_print << ' ' + ('A'..LETTERS[spots.size-1]).to_a.join(' ')  + ' ' + "\n"
       end
     end
     board_print
   end
 
   def add_turn(token, col_letter)
-    letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     token_placed = false
     row_length = @board.size - 1
     while row_length >= 0 do
-      if @board[row_length][letters.index(col_letter)].nil?
-        @board[row_length][letters.index(col_letter)] = token
+      if @board[row_length][LETTERS.index(col_letter)].nil?
+        @board[row_length][LETTERS.index(col_letter)] = token
         token_placed = true
       end
       break if token_placed
