@@ -38,7 +38,7 @@ class Board
     token_placed = false
     row_length = @board.size - 1
     while row_length >= 0 do
-      if @board[row_length][LETTERS.index(col_letter)].nil?
+      if @board[row_length][LETTERS.index(col_letter)].nil? && LETTERS.index(col_letter) < @board.first.size
         @board[row_length][LETTERS.index(col_letter)] = token
         token_placed = true
       end

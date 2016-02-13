@@ -1,11 +1,14 @@
-PersonalizedHavocError = "You should define this yourself!"
+class PersonalizedHavocError < Exception
+end
 
 module PartyGoer
-  @@drink_count = 0
+  def initialize
+    @drink_count = 0
+  end
 
   def drink
-    @@drink_count += 1
-    @@drink_count <= 3
+    @drink_count += 1
+    @drink_count < 3
   end
 
   def sing
@@ -13,7 +16,7 @@ module PartyGoer
   end
 
   def cause_havoc
-    raise PersonalizedHavocError
+     raise PersonalizedHavocError, "You should define this yourself!"
   end
 
   def invited?

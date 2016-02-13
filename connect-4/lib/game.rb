@@ -29,3 +29,5 @@ while game_ongoing do
   end
   turn_index = turn_index == 0 ? 1 : 0
 end
+
+#todo don't change the turn if column letter doesn't exist.
