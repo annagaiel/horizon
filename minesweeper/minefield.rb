@@ -23,7 +23,7 @@ class Minefield
 
   def place_bomb(row_count, column_count, mine_count)
     count = 0
-    while count < mine_count - 1 do
+    while count < mine_count do
       r = rand(0...row_count)
       c = rand(0...column_count)
       if !@board[r][c].has_bomb
@@ -42,20 +42,13 @@ class Minefield
   # it should also clear any adjacent cells as well. This is the action
   # when the player clicks on the cell.
   def clear(row, col)
+    return if @board[row][col].is_open
     @board[row][col].is_open = true
     adjacent_list = adjacent_cells(row, col)
-    no_mines = true
-    adjacent_list.each do |cell|
-      if cell.has_bomb == true
-        no_mines = false
-        break
-      end
-    end
-    if no_mines
+    list = adjacent_list.select { |cell| cell.has_bomb }
+    if list.size == 0
       adjacent_list.each do |cell|
-        # require 'pry'
-        # binding.pry
-        @board[cell.row][cell.col].is_open = true
+          clear(cell.row, cell.col)
       end
     end
   end
@@ -97,7 +90,7 @@ class Minefield
   def all_cells_cleared?
     @board.each do |row|
       row.each do |cell|
-        if !cell.is_open
+        if !cell.has_bomb && !cell.is_open
           return false
         end
       end
@@ -107,8 +100,6 @@ class Minefield
 
   # Returns the number of mines that are surrounding this cell (maximum of 8).
   def adjacent_mines(row, col)
-    # require 'pry'
-    # binding.pry
     adjacent_list = adjacent_cells(row, col)
     mine_count = 0
     adjacent_list.each do |cell|
