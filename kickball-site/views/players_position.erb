@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kickball - <%= @players_position %></title>
+    <link rel="stylesheet" href="/home.css">
+  </head>
+  <body>
+    <h1>
+      The position is <%= @position_name %>
+    </h1>
+
+    <ul>
+      <% @players_position.each do |team, team_name| %>
+        <% team_name.each do |position, name| %>
+          <% if @position_name == position %>
+            <li><%= position %>: <%= name %></li>
+          <% end %>
+        <% end %>
+      <% end %>
+    </ul>
+
+    <a href="/positions">Back to all positions</a>
+  </body>
+</html>
