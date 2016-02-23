@@ -1,0 +1,14 @@
+<h1>List of Shows</h1>
+
+<form action="/television_shows/new" method="get">
+  <button>New Show</button>
+</form>
+
+<ul>
+<% @tv.read_shows.each do |show| %>
+  <h2><%= "#{show.title} (#{show.network})" %></h2>
+  <li>Starting Year: <%= show.starting_year %></li>
+  <li>Synopsis: <%= show.synopsis %></li>
+  <li>Genre: <%= show.genre %></li>
+<% end %>
+</ul>

@@ -1,0 +1,30 @@
+<h1>Add Show Details</h1>
+
+<% if @error.nil? == false %>
+  <%= @error %>
+<% end %>
+
+<form action="/television_shows" method="post">
+  <label for="title">Title:</label>
+  <input type="text" id="title" name="title">
+  <br />
+  <label for="network">Network:</label>
+  <input type="text" id="network" name="network">
+  <br />
+  <label for="starting_year">Starting Year:</label>
+  <input type="text" id="starting_year" name="starting_year">
+  <br />
+  <label for="synopsis">Synopsis:</label>
+  <input type="text" id="synopsis" name="synopsis">
+  <br />
+  <label for="genre">Genre:</label>
+  <select id="genre" name="genre">
+    <option value="Action">Action</option>
+    <option value="Mystery">Mystery</option>
+    <option value="Drama">Drama</option>
+    <option value="Comedy">Comedy</option>
+    <option value="Fantasy">Fantasy</option>
+  </select>
+  <br />
+  <input type="submit" value="Add TV Show">
+</form>
