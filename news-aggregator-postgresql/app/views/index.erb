@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Articles</title>
+    <link rel="stylesheet" href="/home.css">
+  </head>
+
+  <body>
+    <h1>All Articles</h1>
+    <a href="/articles/new">Add a new article</a>
+    <ul>
+      <% @articles.each do |article| %>
+        <li>
+          <div class="title">
+            <h2><%= article["title"] %></h2>
+            <a href="<%= article["url"] %>"><%= article["url"] %></a>
+            <p><%= article["description"] %></p>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </body>
+</html>
