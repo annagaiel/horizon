@@ -25,23 +25,19 @@ include Seeder
 
  db_connection do |conn|
    (TITLES.size).times do |i|
-      if i > 1
         fake_ingredients = Faker::University.name
         fake_instruction = Faker::Hacker.say_something_smart
         res = conn.exec_params("INSERT INTO recipes(title, ingredients, instruction)
                   VALUES ($1, $2, $3) RETURNING id;",
-                  [TITLES[i], fake_ingredients, fake_instruction]
+                  [TITLES[i+1], fake_ingredients, fake_instruction]
                 )
         rand(1..5).times do
           fake_comment = Faker::Lorem.word
           conn.exec_params("INSERT INTO comments(message, recipe_id) VALUES ($1, $2);",
                             [fake_comment, res[0]['id']])
         end
-      end
-   end
-
+    end
  # How many recipes are there in total?
- db_connection do |conn|
    recipes_total = conn.exec("SELECT count(*) FROM recipes;")
    puts ">> recipes_total: #{recipes_total[0]['count']}"
    # How many comments are there in total?
@@ -49,11 +45,17 @@ include Seeder
    puts ">> comments_total: #{comments_total[0]['count']}"
 
  # How would you find out how many comments each of the recipes have?
-# SELECT count(*) FROM comments where recipe_id = 1;
+   res = conn.exec("SELECT recipe_id, count(*) FROM comments GROUP BY recipe_id;")
+   res.each do |row|
+     puts ">> Recipe #{row['recipe_id']}: has #{row['count']}"
+   end
 
-# What is the name of the recipe that is associated with a specific comment?
- # SELECT title FROM recipes;
-
+ # What is the name of the recipe that is associated with a specific comment?
+  res = conn.exec("SELECT recipes.title, comments.message FROM comments, recipes WHERE
+                    comments.recipe_id = recipes.id;")
+  res.each do |row|
+    puts ">> Comment: #{row['message']} is from Recipe: #{row['title']}"
+  end
 
  # Add a new recipe titled Brussels Sprouts with Goat Cheese.
   res = conn.exec_params("INSERT INTO recipes(title) VALUES ($1) RETURNING id;",
