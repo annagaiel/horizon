@@ -1,0 +1,35 @@
+<h1><%= @movies_details.first["title"]%></h1>
+
+<h2>Year</h2>
+<div class="">
+  <%= @movies_details.first["year"] %>
+</div>
+
+<h2>Rating</h2>
+<div class="">
+  <%= @movies_details.first["rating"] %>
+</div>
+
+<h2>Genre</h2>
+<div class="">
+  <%= @movies_details.first["genre"] %>
+</div>
+
+<h2>Studio</h2>
+<div class="">
+  <%= @movies_details.first["studio"] %>
+</div>
+
+<h2>Cast</h2>
+<table>
+  <tr>
+    <th>Actor Name</th>
+    <th>Character Role</th>
+  </tr>
+  <% @movies_details.each do |row| %>
+    <tr>
+      <td><a href="/actors/<%= row['id']%>"><%= row['actor']%></a></td>
+      <td><%= row['character']%></td>
+    </tr>
+  <% end %>
+</table>

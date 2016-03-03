@@ -1,0 +1,8 @@
+<h1>Actors</h1>
+<ul>
+  <% @actors.each do |row| %>
+    <li>
+      <a href="/actors/<%= row["id"]%>"><%= row['name'] %></a>
+    </li>
+  <% end %>
+</ul>

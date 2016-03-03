@@ -1,0 +1,14 @@
+<h1><%= @actors_details.first["actor"] %> Details</h1>
+
+<table>
+  <tr>
+    <th>Movie Title</th>
+    <th>Character Role</th>
+  </tr>
+  <% @actors_details.each do |row| %>
+  <tr>
+    <td><a href="/movies/<%= row["id"]%>"><%= row["title"] %></a></td>
+    <td><%= row['character']%></td>
+  </tr>
+  <% end %>
+</table>
